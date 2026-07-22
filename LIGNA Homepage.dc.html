@@ -22,6 +22,50 @@
   input, textarea { font-family: 'Inter', sans-serif; }
   input::placeholder, textarea::placeholder { color: rgba(247,245,242,0.4); letter-spacing: 0.04em; }
   @keyframes heroFade { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1000px) {
+    nav[data-screen-label="Navigation"] > div { gap: 22px !important; }
+  }
+  @media (max-width: 767px) {
+    html, body { overflow-x: hidden; }
+
+    /* Nav: logo + CTA di baris atas, link menu jadi baris scrollable di bawah */
+    nav[data-screen-label="Navigation"] { flex-wrap: wrap !important; padding: 20px 6vw !important; row-gap: 16px !important; }
+    nav[data-screen-label="Navigation"] > div {
+      order: 3; width: 100%; justify-content: flex-start;
+      gap: 20px !important; overflow-x: auto; padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    nav[data-screen-label="Navigation"] > div::-webkit-scrollbar { display: none; }
+    nav[data-screen-label="Navigation"] > div > a { flex: 0 0 auto; }
+
+    /* Semua grid 12-kolom / 2-kolom jadi satu kolom bertumpuk */
+    [style*="grid-template-columns"] { display: block !important; }
+    [style*="grid-template-columns"] > * { margin-top: 0 !important; }
+    [style*="grid-template-columns"] > * + * { margin-top: 36px !important; }
+
+    /* Skala tipografi turun di layar sempit */
+    [style*="9.5vw"] { font-size: clamp(32px, 9.6vw, 64px) !important; }
+    [style*="3.4vw"], [style*="3.8vw"], [style*="4.6vw"] { font-size: clamp(28px, 8vw, 44px) !important; }
+    [style*="14vw"] { font-size: clamp(40px, 12vw, 80px) !important; letter-spacing: 0.16em !important; }
+
+    /* Wrapper gambar setinggi vh dibuat proporsional untuk layar HP */
+    [style*="76vh"], [style*="78vh"], [style*="82vh"] { height: 52vh !important; }
+    [style*="88vh"], [style*="80vh"] { min-height: 0 !important; height: 52vh !important; }
+
+    /* Ritme antar-section: padding editorial besar dikecilkan */
+    [style*="120px 6vw"] { padding: 56px 6vw 0 !important; }
+    [style*="180px 6vw"] { padding: 96px 6vw 0 !important; }
+    [style*="200px 6vw"] { padding: 96px 6vw 0 !important; }
+    [style*="6vw 180px"] { padding: 96px 6vw 96px !important; }
+    [style*="220px 6vw"] { padding: 96px 6vw 0 !important; }
+    [style*="140px 6vw"] { padding: 88px 6vw 48px !important; }
+    [data-screen-label="06 Craftsmanship"], [data-screen-label="10 Contact"] { margin-top: 96px !important; }
+
+    /* Panel gelap (craft/contact): padding lebih rapat */
+    [style*="7vw"] { padding: 56px 6vw !important; }
+  }
 </style>
 </helmet>
 
